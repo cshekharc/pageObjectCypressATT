@@ -10,7 +10,7 @@ class Login{
     }
 
     clickOnSubmitButtonOfLoginPage(){
-        return cy.get('[name="submit-1"]').click()
+        return cy.get('[name="submit"]').click()
     }
 
     validateLogoutButton(){

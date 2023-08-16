@@ -1,0 +1,27 @@
+1)commands
+npm i --save-dev cypress-mochawesome-reporter
+npm install --save-dev mochawesome
+
+2) changes in cypress.config.js file
+
+module.exports = defineConfig({
+  reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    charts: true,
+    reportPageTitle: 'custom-title',
+    embeddedScreenshots: true,
+    inlineAssets: true,
+    saveAllAttempts: false,
+  },
+  e2e: {
+    setupNodeEvents(on, config) {
+      require('cypress-mochawesome-reporter/plugin')(on);
+    },
+  },
+});
+
+3)changes in e2e.js
+import 'cypress-mochawesome-reporter/register';
+
+4) command to get report
+npx cypress run for all the test
