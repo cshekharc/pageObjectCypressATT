@@ -7,5 +7,14 @@ module.exports = defineConfig({
     },
     // baseUrl: "https://demo.guru99.com/insurance/v1/index.php"
     // pageLoadTimeout : 15000
+    experimentalRunAllSpecs: true,
+    experimentalStudio : true,
+    defaultCommandTimeout: 10000,
+    pageLoadTimeout: 15000,
+    retries: {
+      runMode: 1,
+      openMode: 2,
+    },
   },
+  
 });
