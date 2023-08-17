@@ -6,12 +6,17 @@
   "scripts": {
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "cypress:run_headed":"cypress run --headed",
-    "cypress:run_loginSpec": "cypress run --spec 'cypress/e2e/login.cy.js' --headed"
+    "cypress:run_headed": "cypress run --headed",
+    "cypress:run_loginSpec": "cypress run --spec 'cypress/e2e/login.cy.js' --headed",
+    "cypress:run_devbaseUrl": "cypress run --spec 'cypress/e2e/login.cy.js' --headed --config baseUrl=https://example.com"
   },
   "author": "ATT",
   "license": "ISC",
   "dependencies": {
     "cypress": "^12.17.3"
+  },
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^3.5.1",
+    "mochawesome": "^7.1.3"
   }
 }
