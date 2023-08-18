@@ -5,7 +5,7 @@ const login = new Login()
 
 describe("This test to validate login function", () => {
   beforeEach(() => {
-    cy.visit("/")
+    cy.visit("https://demo.guru99.com/insurance/v1/index.php")
   })
   it("smoke test for login functionality", () => {
 
