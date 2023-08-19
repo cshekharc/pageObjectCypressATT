@@ -1,0 +1,5 @@
+{
+    "tourist_name": Math.random().toString(15).substring(8),
+    "tourist_email": Math.random().toString(15).substring(8)+"@example.com",
+    "tourist_location":Math.random().toString(15).substring(8)
+}

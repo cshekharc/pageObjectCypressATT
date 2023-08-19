@@ -6,7 +6,7 @@ const requestQutotation = new RequestQutotation()
 /// <reference types = "Cypress"/>
 describe("This test to validate Request Quotation functionality", () => {
   beforeEach(() => {
-    cy.visit("https://demo.guru99.com/insurance/v1/index.php")
+    cy.visit("/")
     // login.getUserName("test@test")
     // login.getPassword("test123")
     // login.clickOnSubmitButtonOfLoginPage()
