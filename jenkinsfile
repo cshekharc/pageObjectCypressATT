@@ -14,8 +14,10 @@ pipeline{
             echo "Building the application"
         }
         stage('Testing'){
-            bat 'npm i'
-            bat 'npm run cypress:open -- browser ${BROWSER} --spec ${SPEC}'
+            steps{
+                bat 'npm i'
+                bat 'npm run cypress:open -- browser ${BROWSER} --spec ${SPEC}'
+            }
         }
         stage('Deploying'){
             echo "Deploy the application"
