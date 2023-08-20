@@ -1,32 +1,47 @@
-pipeline{
+pipeline {
     agent any
 
-    parameters{
-        string(name : 'SPEC', defaultValue : "cypress/e2e/**/**", description : "Ebter the specfile here")
-        choise(name: 'BROWSER', choised: ['chrome', 'edge', 'firefox'], description: "choose the browser")
+    parameters {
+        string(name: 'SPEC', defaultValue: 'cypress/e2e/**/**', description: 'Enter the specfile here')
+        choice(name: 'BROWSER', choices: ['chrome', 'edge', 'firefox'], description: 'Choose the browser')
     }
 
-    options{
+    options {
         ansiColor('xterm')
     }
-    stages{
-        stage('Building'){
-            echo "Building the application"
-        }
-        stage('Testing'){
-            steps{
-                bat 'npm i'
-                bat 'npm run cypress:open -- browser ${BROWSER} --spec ${SPEC}'
-            }
-        }
-        stage('Deploying'){
-            echo "Deploy the application"
-        }
 
-        post{
-            always{
-                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'cypress/reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+    stages {
+        stage('Building') {
+            steps {
+                echo 'Building the application'
             }
+        }
+        stage('Testing') {
+            steps {
+                bat 'npm i'
+                bat "npm run cypress:open -- --browser ${BROWSER} --spec ${SPEC}"
+            }
+        }
+        stage('Deploying') {
+            steps {
+                echo 'Deploy the application'
+                // You can add deployment steps here if needed
+            }
+        }
+    }
+
+    post {
+        always {
+            publishHTML(
+                allowMissing: false,
+                alwaysLinkToLastBuild: false,
+                keepAll: true,
+                reportDir: 'cypress/reports',
+                reportFiles: 'index.html',
+                reportName: 'HTML Report',
+                reportTitles: '',
+                useWrapper: false // Changed from useWrapperFileDirectly
+            )
         }
     }
 }
