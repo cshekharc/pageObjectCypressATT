@@ -1,5 +1,8 @@
+/// <reference types="Cypress"/>
+
 describe("queries headers and token",() => {
     let token
+    let customerName = Math.random().toString(15).substring(5)
     // before("get access token",()=>{
    it("get access token",()=>{
         cy.request({
@@ -13,7 +16,10 @@ describe("queries headers and token",() => {
                 clientEmail: Math.random().toString(15).substring(5)+"@example.com"
             }
         }).then((resp)=>{
-            expect(resp.status).eq(201);
+            const mime = resp.headers['content-type']
+            expect(mime).contains("application/json")
+            // expect(resp.headers).to.include("Content-Type")
+            expect(resp.status).eq(201)
             token = resp.body.accessToken
             cy.request({
                 method: "POST",
@@ -24,10 +30,12 @@ describe("queries headers and token",() => {
                 },
                 body:{
                     "bookId": 1,
-                    "customerName": "Marathi Books"
+                    "customerName": customerName
                 }
             }).then((resp)=>{
-                let bookOrderId= resp.body.orderId;
+                let bookOrderId= resp.body.orderId
+                // let getCustomerName = resp.body.customerName
+                // cy.log(getCustomerName)
                 expect(resp.status).eq(201)
                 expect(resp.body.created).to.eq(true)
                 cy.request({
@@ -37,6 +45,8 @@ describe("queries headers and token",() => {
                         "Content-Type": "application/json",
                         "authorization" : "Bearer "+ token
                     },
+                }).then((resposonse)=>{
+                    expect(resposonse.body.customerName).contains(customerName)
                 })
             })
         })
