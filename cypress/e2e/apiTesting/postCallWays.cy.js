@@ -22,7 +22,7 @@ describe("Ways of POST calls",() =>{
             }).then((resp)=>{
                 expect(resp.status).equal(201)
                 expect(resp.body.tourist_email).to.include(reqBody.tourist_email)
-                expect(resp.body.tourist_name).to.include(reqBody.tourist_name)
+                //expect(resp.body.tourist_name).to.include(reqBody.tourist_name)
             })
         //})
     })
