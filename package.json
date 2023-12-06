@@ -4,11 +4,10 @@
   "description": "This is Page object apporach for cypress",
   "main": "index.js",
   "scripts": {
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
-    "cypress:run_headed": "cypress run --headed",
-    "cypress:run_loginSpec": "cypress run --spec 'cypress/e2e/login.cy.js' --headed",
-    "cypress:run_devbaseUrl": "cypress run --spec 'cypress/e2e/login.cy.js' --headed --config baseUrl=https://example.com"
+    "cy:run": "cypress run",
+    "cy:run:chrome": "cypress run --browser chrome",
+    "cy:run:firefox": "cypress run --browser firefox",
+    "cy:run:edge": "cypress run --browser edge"
   },
   "author": "ATT",
   "license": "ISC",
