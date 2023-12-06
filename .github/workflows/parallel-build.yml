@@ -1,4 +1,4 @@
-name: Cypress Tests
+name: Cypress Parallel execution
 
 on: [push, pull_request]
 
